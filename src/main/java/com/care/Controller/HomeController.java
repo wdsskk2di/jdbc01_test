@@ -1,4 +1,4 @@
-package com.care.controller;
+package com.care.Controller;
 
 import java.text.DateFormat;
 import java.util.Date;

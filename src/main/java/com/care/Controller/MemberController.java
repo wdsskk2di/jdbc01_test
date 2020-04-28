@@ -1,4 +1,4 @@
-package com.care.controller;
+package com.care.Controller;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -8,11 +8,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.care.member_service.MemberService;
-import com.care.service.JdbcContentServiceImple;
-import com.care.service.JdbcDeleteserviceImple;
-import com.care.service.JdbcModifySaveserviceImple;
-import com.care.service.JdbcModifyserviceImple;
-import com.care.service.JdbcSaveServiceImple;
+//import com.care.service.JdbcContentServiceImple;
+//import com.care.service.JdbcDeleteserviceImple;
+//import com.care.service.JdbcModifySaveserviceImple;
+//import com.care.service.JdbcModifyserviceImple;
+//import com.care.service.JdbcSaveServiceImple;
 import com.care.template.Constant;
 
 public class MemberController {
@@ -26,6 +26,13 @@ public class MemberController {
 		Constant.template = template;
 	}
 	
+	
+	@RequestMapping("index")
+	public String index() {
+		return "default/main";
+	}
+	
+	/*
 		//목록보기
 		@RequestMapping("content")
 		public String content(Model model) {
@@ -79,4 +86,5 @@ public class MemberController {
 			
 			return "redirect:content";
 		}
+		*/
 }
