@@ -22,15 +22,15 @@ ul li{display:inline; margin-right:50px; margin-bottom: 10px;}
 	<hr>
 		<nav>
 			<ul>
-				<li><a href="main.jsp">Home</a>
-				</li><li><a href="memberInfo.jsp">회원 정보</a></li>
+				<li><a href="index">Home</a>
+				</li><li><a href="memberInfo">회원 정보</a></li>
 				
 				<c:choose>		
-					<c:when test="${sessionScope.loginSuccess == 'Yes' }">
-					<li><a href="logout.jsp">로그아웃</a></li>
+					<c:when test="${loginSuccess == 'Yes' }">
+					<li><a href="logout">로그아웃</a></li>
 					</c:when>
 					<c:otherwise>
-					<li><a href="login.jsp">로그인</a></li>
+					<li><a href="login">로그인</a></li>
 					</c:otherwise>
 				</c:choose>	
 			

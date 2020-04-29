@@ -25,29 +25,41 @@ public class MemberDAO {
 	}
 	
 	//저장하기
-	public void save(final String id, final String name) {
-		String sql = "insert into member02(id, name) values(?,?)";
+	public void save(final String id, final String pw) {
+		String sql = "insert into member02(id, pw) values(?,?)";
 
 		template.update(sql, new PreparedStatementSetter() {
 				
 			@Override
 			public void setValues(PreparedStatement ps) throws SQLException {
 				ps.setString(1, id);
-				ps.setString(2, name);
+				ps.setString(2, pw);
 			}
 		});
 	}
 	
+	//로그인
+	public int login(String id, String pw) {
+		String sql = "select count(*) from member02 where id='"+id+"' and pw ='"+pw+"'";
+		
+		System.out.println(template.queryForObject(sql, Integer.class));
+		
+		if(template.queryForObject(sql, Integer.class) == 0)  return 0;
+		else return 1;
+		//return template.queryForObject(sql, new BeanPropertyRowMapper<MemberDTO>(MemberDTO.class));
+	
+	}	
+	
 	//수정하기 전 수정하려는 id가 있는지 확인
 	public MemberDTO modify(String id) {
-
-		String sql = "select * from member02 where id="+id;
+		String sql = "select count(*) from member02 where id="+id;
+		
 		return template.queryForObject(sql, new BeanPropertyRowMapper<MemberDTO>(MemberDTO.class));
 	}
 	
 	//수정하기
-	public void modifySave(String id, String name) {
-		String sql = "update member02 set name='"+name+"' where id="+id;
+	public void modifySave(String id, String pw) {
+		String sql = "update member02 set pw='"+pw+"' where id="+id;
 		template.update(sql);
 	}
 	

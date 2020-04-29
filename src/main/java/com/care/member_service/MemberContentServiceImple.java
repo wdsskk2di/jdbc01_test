@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import com.care.member_dao.MemberDAO;
 import com.care.member_dto.MemberDTO;
 
-public class JdbcContentServiceImple implements MemberService {
+public class MemberContentServiceImple implements MemberService {
 
 	@Override
 	public void execute(Model model) {
@@ -16,7 +16,7 @@ public class JdbcContentServiceImple implements MemberService {
 		model.addAttribute("list", list);	//list라는 Attribute에 list변수 값 저장
 		
 		//추가
-		model.addAttribute("count", dao.count());
+//		model.addAttribute("count", dao.count());
 	}
 
 }

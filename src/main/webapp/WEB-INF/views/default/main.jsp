@@ -17,7 +17,7 @@
 </head>
 <body>
 
-<c:import url="header.jsp"/>
+<c:import url="../default/header.jsp"/>
 
 <div class=".div_main">
 <b>내 사전에 불가능은 없다.<br>
@@ -28,7 +28,7 @@
 <br>
 </div>
 
-<c:import url="footer.jsp"/>
+<c:import url="../default/footer.jsp"/>
 
 </body>
 </html>
