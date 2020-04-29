@@ -60,29 +60,28 @@ public class MemberDAO {
 		return template.queryForObject(sql, new BeanPropertyRowMapper<MemberDTO>(MemberDTO.class));
 	}
 	
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//수정하기 전 수정하려는 id가 있는지 확인
+	//수정하려는 id와 pw 가져오기
 	public MemberDTO modify(String id) {
-		String sql = "select count(*) from member02 where id="+id;
+		String sql = "select * from member02 where id='"+id+"'";
 		
 		return template.queryForObject(sql, new BeanPropertyRowMapper<MemberDTO>(MemberDTO.class));
 	}
 	
 	//수정하기
 	public void modifySave(String id, String pw) {
-		String sql = "update member02 set pw='"+pw+"' where id="+id;
+		String sql = "update member02 set pw='"+pw+"' where id='"+id+"'";
 		template.update(sql);
 	}
 	
 	//삭제하기
 	public void delete(String id) {
-		String sql = "delete from member02 where id="+id;
+		String sql = "delete from member02 where id='"+id+"'";
 		template.update(sql);
 	}
 	
 	//등록된 총 갯수
-	public int count() {
-		String sql = "select count(*) from member02";
-		return template.queryForObject(sql, Integer.class);
-	}
+//	public int count() {
+//		String sql = "select count(*) from member02";
+//		return template.queryForObject(sql, Integer.class);
+//	}
 }

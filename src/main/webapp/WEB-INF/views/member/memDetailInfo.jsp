@@ -24,6 +24,7 @@
 		</table>
 		<br>
 		<button onclick="location.href='memberInfo'">뒤로</button>
+		<button onclick="location.href='modify?id=${list.id }&pw=${list.pw }'">수정/삭제</button>
 	</div>	
 <c:import url="/WEB-INF/views/default/footer.jsp"/>
 

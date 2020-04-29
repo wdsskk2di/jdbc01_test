@@ -11,8 +11,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.care.member_service.MemberContentServiceImple;
+import com.care.member_service.MemberDeleteserviceImple;
 import com.care.member_service.MemberDetailServiceImple;
 import com.care.member_service.MemberLoginImple;
+import com.care.member_service.MemberModifySaveserviceImple;
+import com.care.member_service.MemberModifyserviceImple;
 import com.care.member_service.MemberSaveServiceImple;
 import com.care.member_service.MemberService;
 import com.care.template.Constant;
@@ -96,6 +99,36 @@ public class MemberController {
 		return "member/registerChk";
 	}
 	
+	//수정화면
+	@RequestMapping("modify")
+	public String modify(Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+		jdbc = new MemberModifyserviceImple();
+		jdbc.execute(model);
+		
+		return "member/modify";
+	}
+	
+		//DB연결 수정 메소드
+	@RequestMapping("modifySave")
+	public String modifySave(Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+		jdbc = new MemberModifySaveserviceImple();
+		jdbc.execute(model);
+		
+		return "redirect:memberInfo";
+	}
+	
+	//삭제
+	@RequestMapping("delete")
+	public String delete(Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+		jdbc = new MemberDeleteserviceImple();
+		jdbc.execute(model);
+
+		return "redirect:memberInfo";
+	}
+	
 	/*
 		//목록보기
 		@RequestMapping("content")
@@ -116,36 +149,6 @@ public class MemberController {
 		public String save(Model model, HttpServletRequest request) {
 			model.addAttribute("request", request);
 			jdbc = new JdbcSaveServiceImple();
-			jdbc.execute(model);
-			
-			return "redirect:content";
-		}
-		
-		//수정화면
-		@RequestMapping("modify")
-		public String modify(Model model, HttpServletRequest request) {
-			model.addAttribute("request", request);
-			jdbc = new JdbcModifyserviceImple();
-			jdbc.execute(model);
-			
-			return "modify";
-		}
-		
-			//DB연결 수정 메소드
-		@RequestMapping("modifySave")
-		public String modifySave(Model model, HttpServletRequest request) {
-			model.addAttribute("request", request);
-			jdbc = new JdbcModifySaveserviceImple();
-			jdbc.execute(model);
-			
-			return "redirect:content";
-		}
-		
-		//삭제
-		@RequestMapping("delete")
-		public String delete(Model model, HttpServletRequest request) {
-			model.addAttribute("request", request);
-			jdbc = new JdbcDeleteserviceImple();
 			jdbc.execute(model);
 			
 			return "redirect:content";
