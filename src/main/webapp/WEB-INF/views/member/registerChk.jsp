@@ -8,14 +8,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-<c:choose>
-<c:when test="${result == 1 }">
-	<script type="text/javascript">alert("회원가입 성공"); location.href="login";</script>
-</c:when>
 
-<c:otherwise>
-	<script type="text/javascript">alert("회원가입 실패"); location.href="register";</script>
-</c:otherwise>
+<c:choose>
+	<c:when test="${result == 1 }">
+		<script type="text/javascript">alert("회원가입 성공"); location.href="login";</script>
+	</c:when>
+	
+	<c:otherwise>
+		<script type="text/javascript">alert("회원가입 실패"); location.href="register";</script>
+	</c:otherwise>
 </c:choose>
+
 </body>
 </html>

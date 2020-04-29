@@ -47,8 +47,6 @@ public class MemberDAO {
 	public int login(String id, String pw) {
 		String sql = "select count(*) from member02 where id='"+id+"' and pw ='"+pw+"'";
 		
-		System.out.println(template.queryForObject(sql, Integer.class));
-		
 		if(template.queryForObject(sql, Integer.class) == 0)  return 0;
 		else return 1;
 		//return template.queryForObject(sql, new BeanPropertyRowMapper<MemberDTO>(MemberDTO.class));
