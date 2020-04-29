@@ -62,8 +62,8 @@ public class MemberController {
 			
 			return "member/memberInfo";
 		}else {
-			return "member/login";
-		}
+			return "redirect:login";	// member/login라고 쓰면 주소창이 Http://localhost:8088/memberInfo 
+		}								// redirect:login라고 쓰면 주소창이 Http://localhost:8088/login
 	}	
 	
 	@RequestMapping("memDetailInfo")
@@ -76,7 +76,7 @@ public class MemberController {
 			
 			return "member/memDetailInfo";
 		}else {
-			return "member/login";
+			return "redirect:login";
 		}
 	}
 	
@@ -87,7 +87,7 @@ public class MemberController {
 	}
 	
 	
-	@RequestMapping("save")
+	@PostMapping("save")
 	public String save(HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
 		jdbc = new MemberSaveServiceImple();

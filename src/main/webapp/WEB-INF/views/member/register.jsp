@@ -13,7 +13,7 @@
 
 <div style="margin: 0 auto;">
 	<h3>회원등록</h3>
-	<form action="save">
+	<form action="save" method="post">
 		<input type="text" name="id" placeholder="아이디"><br>
 		<input type="text" name="pw" placeholder="비밀번호">
 			<hr style="width: 200px;">
