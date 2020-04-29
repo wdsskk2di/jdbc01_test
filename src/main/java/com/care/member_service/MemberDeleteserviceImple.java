@@ -17,7 +17,8 @@ public class MemberDeleteserviceImple implements MemberService {
 		String id = request.getParameter("id");	//id 파람 값 가져옴
 		
 		MemberDAO dao = new MemberDAO();
-		dao.delete(id); //DB연결해서 delete 메소드 실행
+		
+		model.addAttribute("result", dao.delete(id)); //DB연결해서 delete 메소드 실행
 	}
 
 }

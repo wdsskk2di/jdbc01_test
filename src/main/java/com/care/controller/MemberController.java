@@ -126,7 +126,7 @@ public class MemberController {
 		jdbc = new MemberDeleteserviceImple();
 		jdbc.execute(model);
 
-		return "redirect:memberInfo";
+		return "member/delete";
 	}
 	
 	/*

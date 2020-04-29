@@ -74,9 +74,15 @@ public class MemberDAO {
 	}
 	
 	//삭제하기
-	public void delete(String id) {
+	public int delete(String id) {
 		String sql = "delete from member02 where id='"+id+"'";
-		template.update(sql);
+		try {
+			template.update(sql);
+			return 1;
+		} catch (Exception e) {
+			return 0;
+		}
+		
 	}
 	
 	//등록된 총 갯수
