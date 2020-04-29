@@ -25,10 +25,11 @@ public class MemberDAO {
 	}
 	
 	//저장하기
-	public void save(final String id, final String pw) {
+	public int save(final String id, final String pw) {
 		String sql = "insert into member02(id, pw) values(?,?)";
 
-		template.update(sql, new PreparedStatementSetter() {
+		try {				
+			template.update(sql, new PreparedStatementSetter() {
 				
 			@Override
 			public void setValues(PreparedStatement ps) throws SQLException {
@@ -36,6 +37,10 @@ public class MemberDAO {
 				ps.setString(2, pw);
 			}
 		});
+			return 1;
+		} catch (Exception e) {
+			return 0;
+		}
 	}
 	
 	//로그인
@@ -50,6 +55,14 @@ public class MemberDAO {
 	
 	}	
 	
+	//목록 자세히
+	public MemberDTO detailInfo(String id) {
+		String sql = "select * from member02 where id='"+id+"'";
+		
+		return template.queryForObject(sql, new BeanPropertyRowMapper<MemberDTO>(MemberDTO.class));
+	}
+	
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//수정하기 전 수정하려는 id가 있는지 확인
 	public MemberDTO modify(String id) {
 		String sql = "select count(*) from member02 where id="+id;

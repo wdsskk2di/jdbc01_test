@@ -11,19 +11,20 @@
 .table_memberInfo{margin: 0 auto;}
 </style>
 
+
 </head>
 <body>
 
-<c:import url="/WEB-INF/views/default/header.jsp"/>
-<table class="table_memberInfo" border="1">
-		<tr><th>아이디</th><th>비밀번호</th></tr>
-		
-		<c:forEach items="${list }" var="dto">
-		<tr>
-			<td><a href="memDetailInfo?id=${dto.id }">${dto.id }</a></td><td>${dto.pw }</td>
-		</tr>
-		</c:forEach>
-	</table>
+<c:import url="/WEB-INF/views/default/header.jsp"/>			
+	<div style="margin: 0 auto;">
+		<h3>${list.id } 정 보</h3>
+		<table class="table_memberInfo" border="1">
+		<tr><th>아이디</th> <th>${list.id }</th> </tr>
+		<tr><th>비밀번호</th> <th>${list.pw }</th> </tr>
+		</table>
+		<br>
+		<button onclick="location.href='memberInfo'">뒤로</button>
+	</div>	
 <c:import url="/WEB-INF/views/default/footer.jsp"/>
 
 </body>

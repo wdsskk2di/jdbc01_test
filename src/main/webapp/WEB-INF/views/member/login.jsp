@@ -30,7 +30,7 @@
 				<td><input type="text" name="pw" placeholder="비밀번호"><br></td>
 			</tr>
 		</table>						
-			<a class="a_Login" href="register.jsp">회원 가입</a>
+			<a class="a_Login" href="register">회원 가입</a>
 		</form>
 </div>
 <c:import url="/WEB-INF/views/default/footer.jsp"/>

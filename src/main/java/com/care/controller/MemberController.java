@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.care.member_service.MemberContentServiceImple;
+import com.care.member_service.MemberDetailServiceImple;
 import com.care.member_service.MemberLoginImple;
-import com.care.member_service.MemberModifyserviceImple;
+import com.care.member_service.MemberSaveServiceImple;
 import com.care.member_service.MemberService;
 import com.care.template.Constant;
 
@@ -26,8 +27,7 @@ public class MemberController {
 		GenericXmlApplicationContext ctx = new GenericXmlApplicationContext(config);
 		JdbcTemplate template = ctx.getBean("template", JdbcTemplate.class);
 		Constant.template = template;
-	}
-	
+	}	
 	
 	@RequestMapping("index")
 	public String index() {
@@ -65,6 +65,36 @@ public class MemberController {
 			return "member/login";
 		}
 	}	
+	
+	@RequestMapping("memDetailInfo")
+	public String memberDetailInfo(HttpSession session, HttpServletRequest request, Model model) {
+		if(session.getAttribute("loginSuccess") != null) {
+			
+			model.addAttribute("request", request);
+			jdbc = new MemberDetailServiceImple();
+			jdbc.execute(model);
+			
+			return "member/memDetailInfo";
+		}else {
+			return "member/login";
+		}
+	}
+	
+	
+	@RequestMapping("register")
+	public String register() {
+		return "member/register";
+	}
+	
+	
+	@RequestMapping("save")
+	public String save(HttpServletRequest request, Model model) {
+		model.addAttribute("request", request);
+		jdbc = new MemberSaveServiceImple();
+		jdbc.execute(model);
+		
+		return "member/registerChk";
+	}
 	
 	/*
 		//목록보기
