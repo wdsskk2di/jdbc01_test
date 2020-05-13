@@ -19,6 +19,7 @@ public class MemberLoginImple implements MemberService {
 		
 		MemberDAO dao = new MemberDAO();
 		model.addAttribute("result", dao.login(id, pw)); //DB연결해서 modify 메소드 실행
+		model.addAttribute("userID", id);
 	}
 
 }

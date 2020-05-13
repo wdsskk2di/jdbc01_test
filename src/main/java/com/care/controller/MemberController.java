@@ -18,12 +18,16 @@ import com.care.member_service.MemberModifySaveserviceImple;
 import com.care.member_service.MemberModifyserviceImple;
 import com.care.member_service.MemberSaveServiceImple;
 import com.care.member_service.MemberService;
+import com.care.news_service.NewsService;
+import com.care.news_service.detailNews;
+import com.care.news_service.showNews;
 import com.care.template.Constant;
 
 @Controller
 public class MemberController {
 	
 	private MemberService jdbc;
+	private NewsService ns;
 	
 	public MemberController() {
 		String config = "classpath:applicationJDBC.xml";
@@ -51,9 +55,15 @@ public class MemberController {
 		return "member/successLogin";
 	}
 	
+	@RequestMapping("successLoginFinal")
+	public String successLoginFinal() {
+		return "successLoginFinal";
+	}
+	
 	@RequestMapping("logout")
 	public String logout(HttpSession session) {
 		session.invalidate();
+		System.out.println("세션 삭제");
 		return "redirect:login";
 	}
 	
@@ -129,29 +139,21 @@ public class MemberController {
 		return "member/delete";
 	}
 	
-	/*
-		//목록보기
-		@RequestMapping("content")
-		public String content(Model model) {
-			jdbc = new MemberContentServiceImple();
-			jdbc.execute(model);	//model값을 execute로 넘겨줌
-			
-			return "content";
-		}
-		
-		//저장화면
-		@RequestMapping("save_view")
-		public String save_view() {
-			return "save_view";
-		}
-			//DB연결 저장 메소드
-		@RequestMapping("save")
-		public String save(Model model, HttpServletRequest request) {
-			model.addAttribute("request", request);
-			jdbc = new JdbcSaveServiceImple();
-			jdbc.execute(model);
-			
-			return "redirect:content";
-		}
-		*/
+	//게시판
+	@RequestMapping("news")
+	public String news(Model model) {
+		ns = new showNews();
+		ns.execute(model);
+		return "news/news";
+	}
+	
+	//게시판 자세히
+	@RequestMapping("content_view")
+	public String content_view(Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+		ns = new detailNews();
+		ns.execute(model);
+		return "news/content_view";
+	}
+
 }

@@ -85,9 +85,33 @@ public class MemberDAO {
 		
 	}
 	
-	//등록된 총 갯수
-//	public int count() {
-//		String sql = "select count(*) from member02";
-//		return template.queryForObject(sql, Integer.class);
-//	}
+	//등록된 게시글 총 갯수
+	public int count() {
+		String sql = "select count(*) from member02";//테이블 이름 찾아야
+		return template.queryForObject(sql, Integer.class);
+	}
+	
+	//로그인 시간
+	public void inTime(String UserID, String inTime) {
+		String sql = "update MEMBER02_TIME set in_time='"+inTime+"' where id='"+UserID+"'";
+		template.update(sql);
+	}
+	
+	//로그아웃 시간
+	public void outTime(String UserID, String outTime) {
+		String sql = "update MEMBER02_TIME set out_time='"+outTime+"' where id='"+UserID+"'";
+		template.update(sql);
+	}
+	
+	//사용시간 체크위한 메소드
+	public String time(String UserID) {
+		String sql = "select in_time  from member02_time where id='"+UserID+"'";
+		return template.queryForObject(sql, String.class);
+	}
+	
+	//사용시간
+	public void usingTime(String UserID, String usingTime) {
+		String sql = "update MEMBER02_TIME set using_Time='"+usingTime+"' where id='"+UserID+"'";
+		template.update(sql);
+	}
 }

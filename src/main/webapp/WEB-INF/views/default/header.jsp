@@ -24,7 +24,7 @@ ul li{display:inline; margin-right:50px; margin-bottom: 10px;}
 			<ul>
 				<li><a href="index">Home</a>
 				</li><li><a href="memberInfo">회원 정보</a></li>
-				
+				<li><a href="news">게시판</a></li>
 				<c:choose>		
 					<c:when test="${loginSuccess == 'Yes' }">
 					<li><a href="logout">로그아웃</a></li>

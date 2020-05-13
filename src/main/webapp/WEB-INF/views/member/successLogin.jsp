@@ -24,9 +24,8 @@
 
 <c:choose>
 	<c:when test="${result != 0 }">
-		<div class=".div_login">
-		<h3>로그인 성공</h3>
-		</div>
+	<c:set scope="session" var="UserID" value="${userID }"/>
+	<script type="text/javascript">location.href="successLoginFinal?id=${userID}"</script>
 	</c:when>
 	
 	<c:otherwise>
